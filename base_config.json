@@ -1,5 +1,5 @@
 {
-  "SolutionId": "securt",
+  "SolutionId": "pluginTest",
   "SolutionName": "SecuRT (Security)",
   "Detector": {
     "model_file": "auto://pva_det/rgb/medium_512x512/230124",
