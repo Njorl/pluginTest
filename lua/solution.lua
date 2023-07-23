@@ -27,7 +27,7 @@ function onStartup(solution)
 end
 
 function getVersion()
-	return "pluginTest v2.0"
+	return "pluginTest v3.0"
 end
 
 ---@param solution Solution
