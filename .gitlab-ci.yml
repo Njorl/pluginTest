@@ -1,0 +1,102 @@
+#
+# NOTE 1: This CI will cascade changes from this repository into public-release or any other deployment you name
+# only branches in .casdade will trigger automatic changes.
+#
+# NOTE 2: For this to work, this project's slug (address in gitlab url) must match the git submodule folder within
+# the target deployment; example, for the Fall Detection product:
+# https://gitlab.cvedia.com/cvedia-rt/products/fall-detection
+# the slug is fall-detection, which should match the previously added git submodule within the target cascade projects folder:
+# https://gitlab.cvedia.com/cvedia-rt/client-deployments/public-release/-/tree/develop/projects
+#
+# NOTE 3: Make sure the CI
+
+default:
+  image: ${ACR_SERVER}/cvedia/deploy_docker:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_STRATEGY: fetch
+  GIT_DEPTH: 1
+
+stages:
+  - lint
+  - build_artifacts
+  - cascade
+
+### BASE TEMPLATES ############################################################
+
+.base:
+  timeout: 48h
+
+.cascade:
+  extends: .base
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: on_success
+      allow_failure: true
+    # - if: '$CI_COMMIT_BRANCH == "develop"'
+    #   when: on_success
+    #   allow_failure: true
+    # - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    #   when: on_success
+    #   allow_failure: true
+    - when: manual
+  tags:
+    - linux
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
+    GIT_STRATEGY: none
+  script:
+    - |
+      CASCADE_FOLDER=basic-detection-demo
+      VC_BRANCH=nightly
+      if [ "$CI_COMMIT_BRANCH" == "main" -o "$CI_COMMIT_BRANCH" == "develop" ] ; then
+        VC_BRANCH=develop
+      fi
+      echo "-- Cascading build using branch: $VC_BRANCH slug: ${CI_PROJECT_NAME}"
+      TFN=cascade_$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM
+      git clone https://oauth2:${GITLAB_TOKEN}@gitlab.cvedia.com/${CASCADE_URI} --depth 1 -b $VC_BRANCH ${TFN}/ && cd ${TFN} && \
+        git update-index --add --cacheinfo $(git ls-files --stage solutions/${CASCADE_FOLDER}/ | cut -d' ' -f1),${CI_COMMIT_SHA},solutions/${CASCADE_FOLDER} && \
+        git commit -a -m "CI cascade @ ${CI_COMMIT_SHORT_SHA}" && \
+        git push origin $VC_BRANCH
+
+### LINT PROJECT ##############################################################
+
+lint:
+  stage: lint
+  extends: .base
+  tags:
+    - linux
+    - x86_64
+  script:
+    - /deploy/linter.sh -b $(pwd)
+
+### BUILD ARTIFACTS ###########################################################
+
+build_artifacts:
+  stage: build_artifacts
+  extends: .base
+  tags:
+    - linux
+    - x86_64
+  artifacts:
+    paths:
+      - output/
+  script:
+    - |
+      if [ "$CI_COMMIT_BRANCH" != "master" ] ; then
+        export PREFIX=-${CI_COMMIT_BRANCH}
+      fi
+      export PN=${CI_PROJECT_NAME}
+      OUTPUT_PATH=$(pwd)/output PROJECT_BASE_DIR=$(pwd) /deploy/build_project.sh $(pwd)/ ${PN}${PREFIX}
+
+
+### CASCADE ###################################################################
+
+public_cascade:
+  stage: cascade
+  extends: .cascade
+  variables:
+    CASCADE_URI: cvedia-rt/client-deployments/public-release.git
+
+###############################################################################

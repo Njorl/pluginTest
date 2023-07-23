@@ -1,0 +1,328 @@
+{
+  "SolutionId": "securt",
+  "SolutionName": "SecuRT (Security)",
+  "Detector": {
+    "model_file": "auto://pva_det/rgb/medium_512x512/230124",
+    "conf_threshold": 0.49,
+    "nms_iou_threshold": 0.4,
+    "filter_edge_detections": false,
+    "nms_merge_batches": true,
+    "resize_method": "LINEAR",
+    "person_confidence_threshold": 0.49,
+    "animal_confidence_threshold": 0.49,
+    "vehicle_confidence_threshold": 0.49,
+    "remap": {
+      "animal": "animal",
+      "background": "background",
+      "bike": "vehicle",
+      "person": "person",
+      "vehicle": "vehicle"
+    },
+    "sensitivity_preset_values": {
+      "None": {},
+      "Low": {},
+      "Medium": {},
+      "High": {}
+    },
+    "preset_values": {
+      "FullRegionInference": {
+        "Detector/model_file": "auto://pva_det/rgb/medium_512x512/230124",
+        "Detector/conf_threshold": 0.49,
+        "Detector/person_confidence_threshold": 0.49,
+        "Detector/animal_confidence_threshold": 0.49,
+        "Detector/vehicle_confidence_threshold": 0.49
+      },
+      "MosaicInference": {
+        "Detector/model_file" : "auto://pva_det/rgb/medium_y6_mosaic_rot90_320x320_radxa/230713",
+        "Detector/conf_threshold": 0.3,
+        "Detector/person_confidence_threshold": 0.35,
+        "Detector/animal_confidence_threshold": 0.49,
+        "Detector/vehicle_confidence_threshold": 0.49,
+        "Detector/sensitivity_preset_values/Low": {
+          "Detector/conf_threshold": 0.3,
+          "Detector/person_confidence_threshold": 0.86,
+          "Detector/animal_confidence_threshold": 0.7,
+          "Detector/vehicle_confidence_threshold": 0.7
+        },
+        "Detector/sensitivity_preset_values/Medium": {
+          "Detector/conf_threshold": 0.3,
+          "Detector/person_confidence_threshold": 0.35,
+          "Detector/animal_confidence_threshold": 0.49,
+          "Detector/vehicle_confidence_threshold": 0.49
+        },
+        "Detector/sensitivity_preset_values/High": {
+          "Detector/conf_threshold": 0.3,
+          "Detector/person_confidence_threshold": 0.25,
+          "Detector/animal_confidence_threshold": 0.3,
+          "Detector/vehicle_confidence_threshold": 0.3
+        }
+      }
+    },
+    "current_preset": "FullRegionInference",
+    "current_sensitivity_preset": "None"
+  },
+  "DetectorThermal": {
+    "model_file": "auto://pva_det/thermal/medium_512x512/220413b",
+    "conf_threshold": 0.4,
+    "person_confidence_threshold": 0.4,
+    "animal_confidence_threshold": 0.4,
+    "vehicle_confidence_threshold": 0.4,
+    "nms_iou_threshold": 0.10000000149011612,
+    "nms_score_threshold": 0.5,
+    "filter_edge_detections": false,
+    "nms_merge_batches": true,
+    "resize_method": "LINEAR",
+    "remap": {
+      "animal": "animal",
+      "background": "background",
+      "bike": "vehicle",
+      "person": "person",
+      "vehicle": "vehicle"
+    }
+  },
+  "ClassifierRGB": {
+    "model_file": "auto://pva_classifier/rgb/resnet18_64x64/220826"
+  },
+  "ClassifierThermal": {
+    "model_file": "auto://pva_classifier/thermal/resnet18_64x64/220620"
+  },
+  "Bbox3d": {
+    "model_file": "auto://3dbbox_reg/rgb/default_64x64/220907"
+  },
+  "Global": {
+    "modality": "rgb",
+    "Classification": {
+      "enabled": false,
+      "require_locked_track": true,
+      "require_moving_track": true,
+      "classify_unknowns": true,
+      "classify_people": false,
+      "classify_vehicles": false,
+      "classify_animals": false,
+      "min_hits_for_lock": 15.0,
+      "periodic_reclassification": false,
+      "periodic_reclassification_time_sec": 3.0
+    },
+    "Detection": {
+      "enabled": true,
+      "inference_strategy": "full_frame",
+      "motion_guided_settings": {
+        "region_padding": 0.02
+      }
+    },
+    "Bbox3d": {
+      "enabled": false,
+      "run_on_people": false,
+      "run_on_vehicles": true,
+      "run_on_animals": false,
+      "run_on_unknowns": false
+    },
+    "FaceDetection": {
+      "enabled": false,
+      "blur": true,
+      "FaceDetector": {
+        "model_file": "auto://face_det/rgb/10g_512x512/221018",
+        "class_ids": [
+            1
+        ],
+        "conf_threshold": 0.5
+      }
+    },
+    "VehicleClassification": {
+      "enabled": false,
+      "duration_sec": 1.0,
+      "frequency_per_sec": 4,
+      "VehicleClassifier": {
+        "model_file": "auto://vehicle_model_classifier/rgb_thermal/resnet18_128x128/221122"
+      }
+    },
+    "PARClassification": {
+      "enabled": false,
+      "duration_sec": 1,
+      "frequency_per_sec": 5,
+      "bbox_horizontal_padding_factor": 120,
+      "bbox_vertical_padding_factor": 110,
+      "gun_conf_threshold": 0.60,
+      "gun_class_index": 2,
+      "Model": {
+        "model_file": "auto://par_classifier/rgb/resnet34_224_224_2classes/230523"
+      }
+
+    },
+    "Debug": {
+      "enable_debug_sinks": false,
+      "capture_extra_track_info": false
+    }
+  },
+  "Motion": {
+    "detect_shadows": false,
+    "enabled": true,
+    "history_size": 5000.0,
+    "mask_maxval": 255.0,
+    "mask_threshold": 160.0,
+    "max_motion_blobs": 100.0,
+    "stabilize_motion": false,
+    "static_scene": true,
+    "subtractor": "MOG2",
+    "threshold": 51.0,
+    "num_pos_dilates": 3.0,
+    "num_pos_erodes": 0.0,
+    "num_pre_erodes": 0.0,
+    "scale_down_height": 169.0,
+    "scale_down_width": 256.0,
+    "blur_size": "3",
+    "learning_rate": 0.0020000000474974513
+  },
+  "MotionObjectLeftRemoved": {
+    "detect_shadows": false,
+    "enabled": true,
+    "history_size": 5000.0,
+    "mask_maxval": 255.0,
+    "mask_threshold": 220.0,
+    "max_motion_blobs": 100.0,
+    "stabilize_motion": false,
+    "static_scene": true,
+    "subtractor": "MOG2",
+    "threshold": 200.0,
+    "num_pos_dilates": 2.0,
+    "num_pos_erodes": 0.0,
+    "num_pre_erodes": 0.0,
+    "scale_down_height": 100.0,
+    "scale_down_width": 100.0,
+    "learning_rate": 0.0001
+  },
+  "Input": {
+    "VideoReader": {
+      "end_frame": 0.0,
+      "match_fps": true,
+      "output_fps": 15,
+      "start_frame": 0.0
+    },
+    "model": "affine",
+    "sliding_window_radius": 15.0,
+    "stabilize_motion": false,
+    "trim_ratio": 0.0,
+    "media_type": "Video File",
+    "free_run_mode": true,
+		"uri": "appsrc://"
+  },
+  "PersonTracker": {
+    "distance_ceiling": 20.0,
+    "max_age": 1.0,
+    "min_hits_for_lock": 10.0,
+    "motion_time_ceiling": 20000.0,
+    "orb_features": 150.0,
+    "track_camera_motion": false,
+    "error_cov": 0.10000000149011612,
+    "hungarian_iou": 0.04,
+    "meas_cov": 0.4,
+    "debug_feature_tracking": false,
+    "process_cov": 9.999999747378752e-02,
+    "Locking": {
+      "match_ratio_threshold": 0.5,
+      "time_window_duration_sec": 0.4
+    }
+  },
+  "VehicleTracker": {
+    "distance_ceiling": 20.0,
+    "max_age": 0.3,
+    "min_hits_for_lock": 10.0,
+    "motion_time_ceiling": 20000.0,
+    "orb_features": 150.0,
+    "track_camera_motion": false,
+    "error_cov": 0.10000000149011612,
+    "hungarian_iou": 0.2,
+    "meas_cov": 0.1,
+    "process_cov": 9.999999747378752e-02,
+    "eigen_threshold": 0.1,
+    "debug_feature_tracking": true,
+    "Locking": {
+      "match_ratio_threshold": 0.5,
+      "time_window_duration_sec": 0.4
+    }
+  },
+  "AnimalTracker": {
+    "distance_ceiling": 20.0,
+    "max_age": 0.5,
+    "min_hits_for_lock": 10.0,
+    "motion_time_ceiling": 20000.0,
+    "orb_features": 150.0,
+    "track_camera_motion": false,
+    "error_cov": 0.10000000149011612,
+    "hungarian_iou": 0.2,
+    "meas_cov": 1.5,
+    "process_cov": 9.999999747378752e-02,
+    "Locking": {
+      "match_ratio_threshold": 0.5,
+      "time_window_duration_sec": 0.4
+    }
+  },
+  "MotionTracker": {
+    "distance_ceiling": 20.0,
+    "max_age": 0.5,
+    "min_hits_for_lock": 10.0,
+    "motion_time_ceiling": 20000.0,
+    "orb_features": 150.0,
+    "track_camera_motion": false,
+    "error_cov": 0.10000000149011612,
+    "hungarian_iou": 0.2,
+    "meas_cov": 1.5,
+    "process_cov": 9.999999747378752e-02,
+    "Locking": {
+      "match_ratio_threshold": 0.5,
+      "time_window_duration_sec": 0.4
+    }
+  },
+  "ObjectLeftRemovedTracker": {
+    "cnn_iou": 0.20000000298023224,
+    "distance_ceiling": 20.0,
+    "hungarian_iou": 0.009999999776482582,
+    "max_age": 0.2,
+    "min_hits_for_lock": 4.0,
+    "motion_time_ceiling": 20000.0,
+    "orb_features": 150.0,
+    "track_camera_motion": false
+  },
+  "Zones": {
+    "match_mode": 0.0,
+    "zones": {}
+  },
+  "WriteData": {
+    "lua_on_render_ui": ""
+  },
+  "Rect": {},
+  "Tripwire": {
+    "default_bandwidth": 0.07
+  },
+  "Zone": {},
+  "Movement": {
+    "vehicle_movement_threshold": 0.7,
+    "person_movement_threshold": 0.7,
+    "animal_movement_threshold": 1.0,
+    "unknown_movement_threshold": 1.5,
+
+    "sensitivity_preset_values": {
+      "None": {},
+      "Low": {
+        "Movement/vehicle_movement_threshold": 1.3,
+        "Movement/person_movement_threshold": 1.3,
+        "Movement/animal_movement_threshold": 1.6,
+        "Movement/unknown_movement_threshold": 1.6
+      },
+      "Medium": {
+        "Movement/vehicle_movement_threshold": 1.0,
+        "Movement/person_movement_threshold": 1.0,
+        "Movement/animal_movement_threshold": 1.3,
+        "Movement/unknown_movement_threshold": 1.3
+      },
+      "High": {
+        "Movement/vehicle_movement_threshold": 0.7,
+        "Movement/person_movement_threshold": 0.7,
+        "Movement/animal_movement_threshold": 1.0,
+        "Movement/unknown_movement_threshold": 1.0
+      }
+    },
+
+    "current_sensitivity_preset": "None"   
+  }
+}

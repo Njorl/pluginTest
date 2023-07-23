@@ -1,0 +1,45 @@
+{
+    "default": {
+        "8c8de924-be1d-457f-a090-5044c2e96bb3": {
+            "activeHeader": 8,
+            "editName": 0,
+            "nameStr": "",
+            "outputImageWidth_": 544,
+            "outputSidebarWidth_": 350,
+            "sidebar": true,
+            "windowType": "AnalyticsWindow"
+        },
+        "afc6288f-9193-443b-aca8-f76e71e22b34": {
+            "activeData": "events",
+            "activeImage": "source",
+            "display": "TABLE",
+            "mosaic_height": "32px",
+            "mosaic_squash": false,
+            "mosaic_width": "32px",
+            "name": "events",
+            "outputConfigWidth": 0.5487179756164551,
+            "outputDataWidth": 1,
+            "sidebar": false,
+            "table_height": "64px",
+            "table_squash": false,
+            "table_width": "64px",
+            "windowType": "DataWindow"
+        },
+        "cd0fb87d-ab96-4937-8975-895c8d2dd6c7": {
+            "activeData": "wSolution Settings",
+            "windowType": "ConfigWindow"
+        },
+        "d9eac6b9-bb50-467c-b111-61301a1e706a": {
+            "activeImage": "source",
+            "outputImageWidth": 0.7424919605255127,
+            "outputInspectorHeight": 150,
+            "outputSidebarHeight": 417,
+            "outputSidebarWidth": 0.2575080096721649,
+            "presetName": "",
+            "presetNameDialog": false,
+            "sidebar": true,
+            "windowType": "OutputWindow"
+        },
+        "imgui": "[Window][Instances]\nPos=0,66\nSize=500,612\nCollapsed=0\nDockId=0x00000007,0\n\n[Window][CVEDIART Welcome]\nPos=498,231\nSize=417,794\nCollapsed=1\n\n[Window][DockSpaceViewport_11111111]\nPos=0,26\nSize=1628,970\nCollapsed=0\n\n[Window][###8d40e4c5-a44e-43be-b3a8-eee39bfafcbd]\nPos=412,26\nSize=697,281\nCollapsed=0\nDockId=0x00000003,0\n\n[Window][###d9eac6b9-bb50-467c-b111-61301a1e706a]\nPos=502,599\nSize=1288,461\nCollapsed=0\nDockId=0x00000006,0\n\n[Window][Debug##Default]\nPos=60,60\nSize=400,400\nCollapsed=0\n\n[Window][##TOAST0]\nPos=1529,891\nSize=241,150\nCollapsed=0\n\n[Window][loading_bar]\nPos=695,450\nSize=400,160\nCollapsed=0\n\n[Window][###5c5e5349-e3fd-4daf-b1d5-cb62393d5e12]\nPos=324,25\nSize=377,775\nCollapsed=0\n\n[Window][###8186ff36-c102-428e-ab8f-19fc750a2234]\nPos=703,25\nSize=577,775\nCollapsed=0\n\n[Window][##TOAST1]\nPos=1576,665\nSize=324,150\nCollapsed=0\n\n[Window][SaveLayoutAs]\nPos=481,332\nSize=320,135\nCollapsed=0\n\n[Window][###38debf79-28e0-4b9d-9e3c-fce7d32dbdcb]\nPos=839,315\nSize=441,485\nCollapsed=0\n\n[Window][Name preset]\nPos=478,321\nSize=320,135\nCollapsed=0\n\n[Window][Edit Instance]\nPos=240,72\nSize=800,600\nCollapsed=0\n\n[Window][###5dde7c2b-1499-48fe-8996-e17592205f00]\nPos=0,399\nSize=321,368\nCollapsed=0\n\n[Window][###ab65619a-bb2d-452e-b1f2-eaab8de6ec65]\nPos=323,252\nSize=954,492\nCollapsed=0\n\n[Window][###cbc161e7-d111-4d3f-9c49-bbce87c658d7]\nPos=323,303\nSize=954,441\nCollapsed=0\n\n[Window][###f6b3083c-88e2-4864-b804-4873fa9c6d1b]\nPos=803,26\nSize=475,332\nCollapsed=0\n\n[Window][Style Editor]\nPos=162,72\nSize=813,640\nCollapsed=0\n\n[Window][###afc6288f-9193-443b-aca8-f76e71e22b34]\nPos=1414,66\nSize=376,531\nCollapsed=0\nDockId=0x0000000A,0\n\n[Window][###cd0fb87d-ab96-4937-8975-895c8d2dd6c7]\nPos=0,680\nSize=500,380\nCollapsed=0\nDockId=0x00000008,0\n\n[Window][Configure zone (Area 2)]\nPos=319,144\nSize=640,480\nCollapsed=0\n\n[Window][Configure zone (Area 1)]\nPos=512,159\nSize=700,538\nCollapsed=0\n\n[Window][Configure zone (Intrusion area 1)]\nPos=128,142\nSize=640,480\nCollapsed=0\n\n[Window][Master DockSpace]\nPos=0,40\nSize=1790,1021\nCollapsed=0\n\n[Window][###8c8de924-be1d-457f-a090-5044c2e96bb3]\nPos=502,66\nSize=910,531\nCollapsed=0\nDockId=0x00000009,0\n\n[Window][Save Window Layout]\nPos=792,427\nSize=348,140\nCollapsed=0\n\n[Window][EventsManager]\nPos=425,25\nSize=852,288\nCollapsed=0\n\n[Window][Logger]\nPos=-6,149\nSize=1076,501\nCollapsed=0\n\n[Window][##TOAST2]\nPos=896,254\nSize=361,150\nCollapsed=0\n\n[Window][##TOAST3]\nPos=896,94\nSize=361,150\nCollapsed=0\n\n[Window][##TOAST4]\nPos=896,-66\nSize=361,150\nCollapsed=0\n\n[Window][Select Source]\nPos=238,72\nSize=800,600\nCollapsed=0\n\n[Window][Config Video Source]\nPos=238,72\nSize=800,600\nCollapsed=0\n\n[Window][Add a new Instance to Solution]\nPos=445,252\nSize=387,239\nCollapsed=0\n\n[Window][Config]\nPos=0,457\nSize=321,287\nCollapsed=0\n\n[Window][input]\nPos=60,60\nSize=666,150\nCollapsed=0\n\n[Window][Basic PVA Detection Info]\nPos=1204,675\nSize=714,585\nCollapsed=0\n\n[Window][Configure wire (Wire 1)]\nPos=321,160\nSize=640,480\nCollapsed=0\n\n[Table][0xF5F324B0,1]\nColumn 0  Weight=1.0000\n\n[Table][0x5894D707,1]\nColumn 0  Weight=1.0000\n\n[Table][0x03E0B697,4]\nColumn 0  Weight=1.0000\nColumn 1  Weight=1.0000\nColumn 2  Weight=1.0000\nColumn 3  Weight=1.0000\n\n[Table][0x3F0CDAFB,4]\nRefScale=19\nColumn 0  Width=35\nColumn 1  Width=97\nColumn 2  Width=225\nColumn 3  Width=50\n\n[Table][0xDB886270,4]\nRefScale=19\nColumn 0  Sort=0v\n\n[Docking][Data]\nDockSpace       ID=0x785F377C Window=0xF9A24255 Pos=0,66 Size=1790,994 Split=X\n  DockNode      ID=0x00000001 Parent=0x785F377C SizeRef=536,928 Split=Y Selected=0xF8D682CA\n    DockNode    ID=0x00000007 Parent=0x00000001 SizeRef=536,571 Selected=0xF8D682CA\n    DockNode    ID=0x00000008 Parent=0x00000001 SizeRef=536,355 Selected=0x4E11FCCC\n  DockNode      ID=0x00000002 Parent=0x785F377C SizeRef=1382,928 Split=Y\n    DockNode    ID=0x00000005 Parent=0x00000002 SizeRef=1382,496 Split=X\n      DockNode  ID=0x00000009 Parent=0x00000005 SizeRef=992,464 CentralNode=1 Selected=0xABD1C5D6\n      DockNode  ID=0x0000000A Parent=0x00000005 SizeRef=376,464 Selected=0x37492963\n    DockNode    ID=0x00000006 Parent=0x00000002 SizeRef=1382,430 Selected=0xF4F786DB\nDockSpace       ID=0x8B93E3BD Pos=0,26 Size=1628,970 Split=Y\n  DockNode      ID=0x00000003 Parent=0x8B93E3BD SizeRef=956,281 Selected=0x74C7AF6B\n  DockNode      ID=0x00000004 Parent=0x8B93E3BD SizeRef=956,687 CentralNode=1 Selected=0xF4F786DB\n\n"
+    }
+}

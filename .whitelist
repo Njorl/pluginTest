@@ -1,0 +1,7 @@
+*.json
+docs/
+documentation/
+lua/
+assets/videos/*/public/
+README.md
+instances/
