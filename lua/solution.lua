@@ -26,6 +26,10 @@ function onStartup(solution)
     solution:registerUiCallback("onTriggerConfig", "onTriggerConfig", onTriggerConfig)
 end
 
+function getVersion()
+	return "pluginTest v1.0"
+end
+
 ---@param solution Solution
 ---@param instance rt_instance
 function onStartInstance(solution, instance)
